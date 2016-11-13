@@ -189,3 +189,20 @@ float:right;
 font-size: 14px;
  color: beige;
 }
+
+
+#victoryDiv{
+    position: absolute;
+    font-size: 25px;
+color: skyblue;
+    text-shadow: 1px 0px 1px black;   
+  //  background: skyblue;
+    width: 85%;
+opacity: 0.7;
+}
+
+
+#victoryDiv:hover{
+opacity: 0.9;
+
+}

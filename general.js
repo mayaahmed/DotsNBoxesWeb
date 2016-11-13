@@ -1,16 +1,4 @@
 
-// Drop down punjiri screen
-
-function openNav() {
-    document.getElementById("myNav").style.height = "100%";
-}
-
-function closeNav() {
-    document.getElementById("myNav").style.height = "0%";
-}
-
-
-
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -31,3 +19,17 @@ window.onclick = function(event) {
       }
     }
   }}
+
+
+  function applaud(n, string){
+    console.log(string);
+document.getElementById("victoryDiv").innerHTML = string;
+
+  if(n==1)
+var audio = new Audio('applause.mp3');
+  if(n==0)
+var audio = new Audio('boo.mp3');
+audio.play();
+
+}
+

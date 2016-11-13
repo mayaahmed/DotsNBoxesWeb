@@ -1,8 +1,11 @@
+
 #board
 {
-  width:270px; height: 350px;
-  margin: 20px auto auto 15px;
+ width: 630px; height: 350px;
+margin: 20px auto auto 15px;
+opacity= 0.7;
 }
+
 
 div.left
 {
@@ -25,7 +28,7 @@ div.top
 float: left;
 width:45px;
 height:3px;
-margin:2px;
+margin:1.7px;
 border:1px solid gray;
 background: rgba(0,0,0,0.1);
 box-shadow: 5px 5px 50px #1c1c1c;
@@ -36,18 +39,21 @@ box-shadow: 5px 5px 50px #1c1c1c;
 
 }
 
-
 div.middle
 {
 float: left;
 width: 45px;
-height:45px;
-margin-top: 1px;
+height: 44px;
+
 font-size: 35px;
-line-height: 40px;
+line-height: 45px;
 text-align:center;
 
 }
+
+
+
+
 
 
 #leftcell00{
@@ -119,8 +125,3 @@ div.top:hover
 background: skyblue;
 opacity: 0.7;
 }
-
-
-
-
-    

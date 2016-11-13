@@ -331,19 +331,22 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
 } //end of function
 
 
+
+
+
 function checkresult(){
-  var string = 'Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore;
+ 
   if(middleScore==30){
     if(playerScore > computerScore){
-      
+        var string = 'Congratulations! You Win.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore; 
       applaud(1, string);
     }
     else if(playerScore < computerScore){
-         
+         var string = 'Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore; 
       applaud(0, string);
     }
     else {
-     
+       var string = 'Game is a draw.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore; 
       applaud(1, string);
     }
   }

@@ -172,7 +172,7 @@ function computerTurn(){
    }
   
  
-   // Any one edge is selected, choose a safe edge
+   // Choosing a safe edge
 
    i=1; j=1;
 while(decide==0 && i<m){
@@ -222,6 +222,28 @@ else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && lef
 && leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==true && topArray[i][j-1].disabled==false  
            && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==true  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
+         {r=i; c=j; s="top"; decide=1;}
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false 
+           && leftArray[i][j-1].disabled==true  && topArray[i+1][j-1].disabled==false )
+         {r=i; c=j; s="top"; decide=1;}
+
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false 
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==true )
+         {r=i; c=j; s="top"; decide=1;}
+
+
+
 
 else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
@@ -351,18 +373,18 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
 
 
 function checkresult(){
-  var string = 'Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore;
+ 
   if(middleScore==66){
     if(playerScore > computerScore){
-      
+        var string = 'Congratulations! You Win.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore; 
       applaud(1, string);
     }
     else if(playerScore < computerScore){
-         
+         var string = 'Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore; 
       applaud(0, string);
     }
     else {
-     
+       var string = 'Game is a draw.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore; 
       applaud(1, string);
     }
   }

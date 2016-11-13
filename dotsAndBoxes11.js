@@ -3,7 +3,7 @@
 // m is number of rows and  n is number of columns
 
 var m= 6; 
-var n = 5;
+var n = 11;
 var i=0; var j=0;
 var computer =0;
 var computerScore=0;
@@ -146,6 +146,8 @@ function computerTurn(){
   var r=0;  var c=0; var s; var check=0;
   var decide=0; color="red";
   
+
+  // if any three sides are already selected, choose fourth to claim box  
    while(decide==0 && i<m){
      while(j<n){
        if(topArray[i][j].disabled==false && leftArray[i][j].disabled==true && leftArray[i][j+1].disabled==true 
@@ -170,9 +172,9 @@ function computerTurn(){
    }
   
  
+   // Any one edge is selected, choose a safe edge
 
-
-   i=1; j=1;
+   i=1; j=0;
 while(decide==0 && i<m){
      while(j<n){
 
@@ -217,9 +219,6 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
 && leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
          {r=i; c=j; s="left"; decide=1;}
-
-
-
 
 
       j=j+1;
@@ -270,11 +269,18 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
       else if(row < 0.64) r=4;
       else if(row < 0.8) r=5;
       else r=6;
-      if(col < 0.2) c=0;
-      else if(col < 0.4) c=1; 
-      else if(col < 0.6) c=2; 
-      else if(col < 0.8) c=3; 
-      else c=4;  
+      if(col < 0.09) c=0;
+      else if(col < 0.18) c=1; 
+      else if(col < 0.27) c=2; 
+      else if(col < 0.31) c=3; 
+      else if(col < 0.4) c=4; 
+      else if(col < 0.49) c=5; 
+      else if(col < 0.56) c=6; 
+      else if(col < 0.65) c=7; 
+      else if(col < 0.74) c=8; 
+      else if(col < 0.83) c=9; 
+      else if(col < 0.92) c=10; 
+      else c=11;  
 
       if(r<6 && c<4){
         if(topArray[r][c].disabled==false)
@@ -332,7 +338,7 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
 
 
 function checkresult(){
-  if(middleScore==30){
+  if(middleScore==66){
     if(playerScore > computerScore){
          alert('Congratulations! You won.'+ '\n' +'Computer Score: '+computerScore +'\n'+ 'Player Score:' + playerScore);
          applaud(1);

@@ -172,7 +172,7 @@ function computerTurn(){
    }
   
  
-   // Choosing a safe edge
+   // Choosing a safe edge if one edge is selected
 
    i=1; j=1;
 while(decide==0 && i<m){
@@ -258,14 +258,105 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
  }
   
 
-// if no edge is selected choose one
+
+ // Choosing a safe edge if two edges are selected
+
+   i=1; j=1;
+while(decide==0 && i<m){
+     while(j<n){
+       
+        if(topArray[i][j].disabled==false && leftArray[i][j].disabled==true && leftArray[i][j+1].disabled==true 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false )
+         {r=i; c=j-1; s="top"; decide=1;}
+  
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==true 
+          && topArray[i+1][j].disabled==true  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false)
+         {r=i; c=j-1; s="top"; decide=1;}
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==true && leftArray[i][j+1].disabled==false
+          && topArray[i+1][j].disabled==true  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false)
+         {r=i; c=j-1; s="top"; decide=1;}
+     
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==true 
+&& leftArray[i-1][j+1].disabled==true   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false )
+         {r=i; c=j; s="top"; decide=1;}
+
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==true   && topArray[i-1][j].disabled==true && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false )
+         {r=i; c=j; s="top"; decide=1;}
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==true && topArray[i][j-1].disabled==true  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false )
+         {r=i; c=j; s="top"; decide=1;}
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==true  
+           && leftArray[i][j-1].disabled==true  && topArray[i+1][j-1].disabled==false  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false )
+         {r=i; c=j; s="top"; decide=1;}
+
+else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false 
+           && leftArray[i][j-1].disabled==true  && topArray[i+1][j-1].disabled==true   && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false)
+         {r=i; c=j; s="top"; decide=1;}
+
+
+else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+          && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==true  && leftArray[i+1][j].disabled==false 
+&& leftArray[i+1][j+1].disabled==false   && topArray[i+2][j].disabled==false && topArray[i][j+1].disabled==false  
+           && leftArray[i][j+1].disabled==false  && topArray[i+1][j+1].disabled==false )
+         {r=i; c=j; s="left"; decide=1;}
+
+
+      j=j+1;
+    }
+    i=i+1; j=1;
+ }
+  
+
+
+
+
+// Look at each box
 
 i=0; j=0;
 while(decide==0 && i<m){
      while(j<n){
-       if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
+       if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false)
-         {r=i; c=j; s="top"; decide=1;}
+         {r=i+1; c=j; s="top"; decide=1;}
        
        else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==true && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false)
@@ -279,9 +370,7 @@ else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && lef
           && topArray[i+1][j].disabled==true)
          {r=i; c=j; s="top"; decide=1;}
        
-else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
-          && topArray[i+1][j].disabled==false)
-         {r=i; c=j; s="left"; decide=1;}
+
        
        
       j=j+1;

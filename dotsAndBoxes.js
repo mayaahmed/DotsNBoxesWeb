@@ -332,27 +332,21 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
 
 
 function checkresult(){
+  var string = 'Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore;
   if(middleScore==30){
     if(playerScore > computerScore){
-         alert('Congratulations! You won.'+ '\n' +'Computer Score: '+computerScore +'\n'+ 'Player Score:' + playerScore);
-         applaud(1);
+      
+      applaud(1, string);
     }
     else if(playerScore < computerScore){
-         alert('Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore);
-         applaud(0);
+         
+      applaud(0, string);
     }
     else {
-      alert('Game is a draw.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore);
-      applaud(1);
+     
+      applaud(1, string);
     }
   }
 }
 
 
-function applaud(n){
-  if(n==1)
-var audio = new Audio('applause.mp3');
-  if(n==0)
-var audio = new Audio('boo.mp3');
-audio.play();
-}

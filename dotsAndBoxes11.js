@@ -174,60 +174,71 @@ function computerTurn(){
  
    // Any one edge is selected, choose a safe edge
 
-   i=1; j=0;
+   i=1; j=1;
 while(decide==0 && i<m){
      while(j<n){
 
 
         if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
+           && leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false 
+           && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  )
          {r=i; c=j; s="top"; decide=1;}
        
        else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==true && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
   
 else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==true 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
 
 else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false
           && topArray[i+1][j].disabled==true  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
      
 else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==true 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
 
 
 else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==true   && topArray[i-1][j].disabled==false  )
+&& leftArray[i-1][j+1].disabled==true   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
 
 else if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==true  )
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==true && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false )
          {r=i; c=j; s="top"; decide=1;}
 
 else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
           && topArray[i+1][j].disabled==false  && leftArray[i-1][j].disabled==false 
-&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false  )
+&& leftArray[i-1][j+1].disabled==false   && topArray[i-1][j].disabled==false && topArray[i][j-1].disabled==false  
+           && leftArray[i][j-1].disabled==false  && topArray[i+1][j-1].disabled==false  )
          {r=i; c=j; s="left"; decide=1;}
 
 
       j=j+1;
     }
-    i=i+1; j=0;
+    i=i+1; j=1;
  }
   
 
- i=0; j=0;
+// if no edge is selected choose one
+
+i=0; j=0;
 while(decide==0 && i<m){
      while(j<n){
        if(topArray[i][j].disabled==false && leftArray[i][j].disabled==false && leftArray[i][j+1].disabled==false 
@@ -255,6 +266,8 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
     }
     i=i+1; j=0;
  }
+  
+
   
 
 
@@ -338,27 +351,22 @@ else if(topArray[i][j].disabled==true && leftArray[i][j].disabled==false && left
 
 
 function checkresult(){
+  var string = 'Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore;
   if(middleScore==66){
     if(playerScore > computerScore){
-         alert('Congratulations! You won.'+ '\n' +'Computer Score: '+computerScore +'\n'+ 'Player Score:' + playerScore);
-         applaud(1);
+      
+      applaud(1, string);
     }
     else if(playerScore < computerScore){
-         alert('Game Over! You lose.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore);
-         applaud(0);
+         
+      applaud(0, string);
     }
     else {
-      alert('Game is a draw.'+ '\n Computer Score: '+computerScore +'\n Player Score:' + playerScore);
-      applaud(1);
+     
+      applaud(1, string);
     }
   }
 }
 
 
-function applaud(n){
-  if(n==1)
-var audio = new Audio('applause.mp3');
-  if(n==0)
-var audio = new Audio('boo.mp3');
-audio.play();
-}
+
